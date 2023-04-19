@@ -1,5 +1,5 @@
 
-package ToDoApp;
+package main;
 
 import controller.ProjectController;
 import java.sql.Connection;
@@ -19,8 +19,10 @@ public class Main {
         ProjectController projectController = new ProjectController();
         
         Project project = new Project();
-        project.setName("Projeto Teste");
-        project.setDescription("teste");
+        project.setName("Projeto 2");
+        project.setDescription("abc");
+        project.setCreatedAt(new java.util.Date());
+        project.setUpdatedAt(new java.util.Date());
         projectController.save(project);
         
 //        project.setName("Novo nome do projeto de teste");
