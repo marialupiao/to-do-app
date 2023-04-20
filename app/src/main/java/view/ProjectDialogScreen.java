@@ -52,7 +52,7 @@ public class ProjectDialogScreen extends javax.swing.JDialog {
         jLabelTitle.setText("    Projetos");
 
         jLabelToolBarSave.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelToolBarSave.setIcon(new javax.swing.ImageIcon("C:\\Users\\Cliente\\Downloads\\checked(1).png")); // NOI18N
+        jLabelToolBarSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/checked(1).png"))); // NOI18N
         jLabelToolBarSave.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelToolBarSaveMouseClicked(evt);
@@ -85,7 +85,7 @@ public class ProjectDialogScreen extends javax.swing.JDialog {
         jLabelName.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabelName.setForeground(new java.awt.Color(223, 230, 233));
         jLabelName.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabelName.setText("Nome");
+        jLabelName.setText("Nome *");
 
         jTextFieldName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextFieldName.setForeground(new java.awt.Color(99, 110, 114));
@@ -154,19 +154,23 @@ public class ProjectDialogScreen extends javax.swing.JDialog {
     private void jLabelToolBarSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelToolBarSaveMouseClicked
         
         try {
+            if(!jTextFieldName.getText().equals("")) {
             Project project = new Project(); 
             project.setName(jTextFieldName.getText());
             project.setDescription(jTextAreaDescription.getText());
             project.setCreatedAt(new java.util.Date());
             project.setUpdatedAt(new java.util.Date());
-           
-        
             controller.save(project);
             JOptionPane.showMessageDialog(rootPane, "Projeto salvo com sucesso");
+            this.dispose();    
+            } else {
+               JOptionPane.showMessageDialog(rootPane, "Os campos com * são obrigatórios");
+            }
+        
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }
-        this.dispose();
+        
     }//GEN-LAST:event_jLabelToolBarSaveMouseClicked
 
     /**

@@ -61,7 +61,7 @@ public class TaskDialogScreen extends javax.swing.JDialog {
         jLabelToolBarTitle.setText("   Tarefa");
 
         jLabelToolBarSave.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelToolBarSave.setIcon(new javax.swing.ImageIcon("C:\\Users\\Cliente\\Downloads\\checked(1).png")); // NOI18N
+        jLabelToolBarSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/checked(1).png"))); // NOI18N
         jLabelToolBarSave.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelToolBarSaveMouseClicked(evt);
@@ -93,7 +93,7 @@ public class TaskDialogScreen extends javax.swing.JDialog {
 
         jLabelName.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabelName.setForeground(new java.awt.Color(223, 230, 233));
-        jLabelName.setText("Nome");
+        jLabelName.setText("Nome *");
 
         jTextFieldName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextFieldName.setForeground(new java.awt.Color(99, 110, 114));
@@ -110,7 +110,7 @@ public class TaskDialogScreen extends javax.swing.JDialog {
 
         jLabelDeadline.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabelDeadline.setForeground(new java.awt.Color(223, 230, 233));
-        jLabelDeadline.setText("Prazo");
+        jLabelDeadline.setText("Prazo *");
 
         jLabelNotes.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabelNotes.setForeground(new java.awt.Color(223, 230, 233));
@@ -190,8 +190,11 @@ public class TaskDialogScreen extends javax.swing.JDialog {
     private void jLabelToolBarSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelToolBarSaveMouseClicked
         
         try {
+            if(jTextFieldName.getText().isEmpty() && jFormattedTextFieldDeadline.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "Os campos com * são obrigatórios");
+            } else {
             Task task = new Task();
-            task.setIdProject(4);
+            task.setIdProject(project.getId());
             task.setName(jTextFieldName.getText());
             task.setDescription(jTextAreaDescription.getText());
             task.setIsCompleted(false);
@@ -205,13 +208,14 @@ public class TaskDialogScreen extends javax.swing.JDialog {
             
             controller.save(task);
             JOptionPane.showMessageDialog(rootPane, "Tarefa salva com sucesso");
-            
+            this.dispose();   
+            }
             
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }
         
-        this.dispose();
+        
     }//GEN-LAST:event_jLabelToolBarSaveMouseClicked
 
     /**

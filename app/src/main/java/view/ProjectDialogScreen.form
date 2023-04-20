@@ -92,7 +92,7 @@
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Cliente\Downloads\checked(1).png"/>
+              <Image iconType="3" name="/checked(1).png"/>
             </Property>
           </Properties>
           <Events>
@@ -149,7 +149,7 @@
               <Color blue="e9" green="e6" red="df" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="2"/>
-            <Property name="text" type="java.lang.String" value="Nome"/>
+            <Property name="text" type="java.lang.String" value="Nome *"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldName">
